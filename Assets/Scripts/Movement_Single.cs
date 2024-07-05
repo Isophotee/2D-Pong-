@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement_Single : MonoBehaviour
-{
+public class Movement_Single : MonoBehaviour{
     private Rigidbody2D rb2d;
     public KeyCode space;
     public float speed;
@@ -13,6 +12,7 @@ public class Movement_Single : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
     }
 
+    // Update is called once per frame
     void Update()
     {
         playerControl();

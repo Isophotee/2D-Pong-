@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject panelWin;
-    public GameObject panelLose;
     public  int PlayerScoreL = 0;
     public  int PlayerScoreR = 0;
 
@@ -31,14 +29,12 @@ public class GameManager : MonoBehaviour
     {
         txtPlayerScoreL.text = PlayerScoreL.ToString();
         txtPlayerScoreR.text = PlayerScoreR.ToString();
-        panelWin.SetActive(false);
-        panelLose.SetActive(false);
     }
 
 
     public void Score(string wallID)
     {
-        if (wallID == "playerGoal")
+        if (wallID == "Wall_Player1")
         {
             PlayerScoreR = PlayerScoreR + 1;
             txtPlayerScoreR.text = PlayerScoreR.ToString();
@@ -52,16 +48,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void checkScore()
+public void checkScore()
     {
-        if (PlayerScoreL == 3)
+        if (PlayerScoreL == 5)
         {
-            panelWin.SetActive(true);
+            Debug.Log("playerL win");
+            this.gameObject.SendMessage("ChangeScene","StartScene");
         }
-        else if (PlayerScoreR == 3)
+        else if (PlayerScoreR == 5)
         {
-            panelLose.SetActive(true);
+            Debug.Log("playerR win");
+            this.gameObject.SendMessage("ChangeScene", "");
         }
     }
-
 }

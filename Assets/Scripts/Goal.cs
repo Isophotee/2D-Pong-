@@ -4,24 +4,17 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
-    public GameObject Ball;
-    void Start()
+    
+    void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        
-    }
 
-    void Update()
-    {
-        
-    }
-
-    private void OnTriggerEnter2D (Collider2D hitinfo)
-    {
-        if (hitinfo.name == "Ball")
+        if (hitInfo.name == "Ball")
         {
             string wallName = transform.name;
+						//memanggil method Score di GameManager.cs
             GameManager.instance.Score(wallName);
-            hitinfo.gameObject.SendMessage("RestartGame", 1.0f, SendMessageOptions.RequireReceiver);
+						//memanggil method RestartGame() di BallControl.cs
+            hitInfo.gameObject.SendMessage("RestartGame", 1.0f, SendMessageOptions.RequireReceiver);
         }
     }
 }
